@@ -13,7 +13,7 @@ import React from "react";
 function Header() {
   return (
     <div className="flex place-content-between items-center bg-slate-600 text-white text-3xl px-4 py-3 flex border-b-2 border-white">
-      <div className="">Sandbox</div>
+      <div className="">Notepad</div>
       {/* <AddToList {handleClick}/> */}
     </div>
   );
