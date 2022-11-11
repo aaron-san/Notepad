@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IState as Props } from "../App";
 
 interface IProps {
@@ -35,6 +35,7 @@ const AddToList: React.FC<IProps> = ({ setItems, items }) => {
     const currentDate = new Date();
     const id = currentDate.getTime() - baseDate.getTime();
 
+    // Add item to items
     setItems([
       ...items,
       {

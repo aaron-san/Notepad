@@ -4,9 +4,9 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import List from "./components/List";
+// import List from "./components/List";
 import Header from "./components/Header";
 import AddToList from "./components/AddToList";
 
@@ -19,22 +19,63 @@ export interface IState {
 }
 
 function App() {
-  const [items, setItems] = useState<IState["items"]>([
-    {
-      id: 1,
-      title: "Card 1",
-      content: "Card 1 content",
-    },
-  ]);
+  const [items, setItems] = useState<IState["items"]>(() => {
+    const savedItems: any = localStorage.getItem("items");
+    const items = JSON.parse(savedItems);
+    return items || null;
+  });
 
-  //   // Create id
-  //   const baseDate = new Date("1999-12-31");
-  //   const currentDate = new Date();
-  //   const id = currentDate.getTime() - baseDate.getTime();
-  //   const newItem = { id, item };
+  // {
+  //   id: 1,
+  //   title: "Card 1",
+  //   content: "Card 1 content",
+  // },
 
-  //   setItems({ ...items, newItem });
-  // };
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
+  const handleDelete = (id: number) => {
+    // e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const filteredItems = items.filter((item) => {
+      return item.id !== id;
+    });
+
+    setItems(filteredItems);
+    // setNotes([...notes].filter((note) => note.id !== id));
+    // setItems([...items].filter((item) => item.id !== id));
+  };
+
+  interface IProps {
+    items: IState["items"];
+  }
+
+  const List: React.FC<IProps> = ({ items }) => {
+    // const [showItem, setShowItem] = useState<React.SetStateAction<boolean>>(true);
+    const renderList = (): JSX.Element[] => {
+      return items.map((item) => {
+        return (
+          <li key={item.id}>
+            <div className="flex flex-col w-80 h-fit border-solid border-2 border-slate-400 rounded-br-lg rounded-bl-lg rounded-tr-3xl shadow-lg">
+              <div className="flex justify-between p-2 rounded-tr-3xl text-white text-xl bg-gradient-to-b from-slate-500 to-slate-400">
+                {item.title}
+                <button
+                  className="text-red-400 px-2 text-sm bg-gray-200 rounded-full border border-gray-500 hover:bg-white hover:text-red-600"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  X
+                </button>
+              </div>
+              <div className="bg-white h-48 p-2 rounded-br-lg rounded-bl-lg">
+                {item.content}
+              </div>
+            </div>
+          </li>
+        );
+      });
+    };
+    return <ul className="flex flex-wrap gap-3">{renderList()}</ul>;
+  };
 
   return (
     <div className="App bg-gradient-to-r from-stone-300">
