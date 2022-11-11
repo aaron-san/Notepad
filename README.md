@@ -1,3 +1,23 @@
+npm install gh-pages
+
+In package.json:
+
+Add:
+
+"homepage": "https://aaron-san.github.io/<repository>"
+"name": ...
+
+Add:
+
+"scripts": {
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build",
+}
+
+git add .
+git commit -m "deploy website"
+git push
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
