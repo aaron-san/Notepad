@@ -71,7 +71,7 @@ const AddToList: React.FC<IProps> = ({ setItems, items }) => {
         name="content"
       />
       <button
-        className="text-slate-500 text-lg mx-3 bg-green-100 border-2 border-white shadow-lg rounded-3xl px-2 py-1 mr-2"
+        className="text-slate-500 text-lg mx-3 bg-green-100 hover:bg-green-200 hover:text-slate-600 hover:shadow-xl border-2 border-white shadow-lg rounded-3xl px-2 py-1 mr-2"
         onClick={handleClick}
       >
         Add Card

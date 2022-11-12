@@ -56,7 +56,7 @@ function App() {
       return items?.map((item) => {
         return (
           <li key={item.id}>
-            <div className="flex flex-col w-80 h-fit border-solid border-2 border-slate-400 rounded-br-lg rounded-bl-lg rounded-tr-3xl shadow-lg">
+            <div className="flex flex-col w-80 border-solid border-2 border-slate-400 rounded-br-lg rounded-bl-lg rounded-tr-3xl shadow-lg">
               <div className="flex justify-between p-2 rounded-tr-3xl text-white text-xl bg-gradient-to-b from-slate-500 to-slate-400">
                 {item.title}
                 <button
@@ -66,7 +66,7 @@ function App() {
                   X
                 </button>
               </div>
-              <div className="bg-white h-48 p-2 rounded-br-lg rounded-bl-lg">
+              <div className="bg-white p-2 rounded-br-lg rounded-bl-lg">
                 {item.content}
               </div>
             </div>
