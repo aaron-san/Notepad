@@ -53,7 +53,7 @@ function App() {
   const List: React.FC<IProps> = ({ items }) => {
     // const [showItem, setShowItem] = useState<React.SetStateAction<boolean>>(true);
     const renderList = (): JSX.Element[] => {
-      return items.map((item) => {
+      return items?.map((item) => {
         return (
           <li key={item.id}>
             <div className="flex flex-col w-80 h-fit border-solid border-2 border-slate-400 rounded-br-lg rounded-bl-lg rounded-tr-3xl shadow-lg">
