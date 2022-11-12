@@ -63,7 +63,7 @@ const AddToList: React.FC<IProps> = ({ setItems, items }) => {
         name="title"
       />
       <input
-        className="mx-3 border-2 border-orange-500 rounded-lg shadow-sm p-2"
+        className="m-3 border-2 border-orange-500 rounded-lg shadow-sm p-2"
         type="text"
         placeholder="Content"
         value={input.content}

@@ -56,8 +56,8 @@ function App() {
       return items?.map((item) => {
         return (
           <li key={item.id}>
-            <div className="flex flex-col w-80 border-solid border-2 border-slate-400 rounded-br-lg rounded-bl-lg rounded-tr-3xl shadow-lg">
-              <div className="flex justify-between p-2 rounded-tr-3xl text-white text-xl bg-gradient-to-b from-slate-500 to-slate-400">
+            <div className="flex flex-col max-w-[300px] sm:w-80 border-solid border-2 border-slate-400 rounded-br-lg rounded-bl-lg rounded-tr-3xl shadow-lg">
+              <div className="flex justify-between p-2  rounded-tr-3xl text-white text-xl bg-gradient-to-b from-slate-500 to-slate-400">
                 {item.title}
                 <button
                   className="text-red-400 px-2 text-sm bg-gray-200 rounded-full border border-gray-500 hover:bg-white hover:text-red-600"
@@ -83,7 +83,7 @@ function App() {
       <div className="flex justify-center">
         <AddToList setItems={setItems} items={items} />
       </div>
-      <main className="flex flex-wrap gap-6 text-slate-600 mt-4 px-10">
+      <main className="flex flex-wrap gap-6 text-slate-600 mt-4">
         <List items={items} />
       </main>
     </div>
