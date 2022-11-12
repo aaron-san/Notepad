@@ -2,7 +2,7 @@
   "homepage": "https://aaron-san.github.io/notepad/",
   "name": "notepad",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
