@@ -15,7 +15,7 @@ body {
 
 @layer components {
   body {
-    @apply bg-purple-400;
+    /* @apply bg-purple-400; */
   }
   
 }
