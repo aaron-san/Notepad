@@ -25,18 +25,11 @@ function App() {
     return items || [];
   });
 
-  // {
-  //   id: 1,
-  //   title: "Card 1",
-  //   content: "Card 1 content",
-  // },
-
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
   }, [items]);
 
   const handleDelete = (id: number) => {
-    // e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const filteredItems = items.filter((item) => {
       return item.id !== id;
     });
@@ -51,13 +44,12 @@ function App() {
   }
 
   const List: React.FC<IProps> = ({ items }) => {
-    // const [showItem, setShowItem] = useState<React.SetStateAction<boolean>>(true);
     const renderList = (): JSX.Element[] => {
       return items?.map((item) => {
         return (
           <li key={item.id}>
-            <div className="flex flex-col max-w-[300px] ml-4 sm:w-80 border-solid border-2 border-slate-400 rounded-br-lg rounded-bl-lg rounded-tr-3xl shadow-lg">
-              <div className="flex justify-between p-2  rounded-tr-3xl text-white text-xl bg-gradient-to-b from-slate-500 to-slate-400">
+            <div className="max-w-[300px] mx-auto sm:w-80 border-solid border-2 border-slate-400 rounded-br-[6px] rounded-bl-[6px] rounded-tr-[20px] shadow-lg">
+              <div className="flex justify-between p-2 rounded-tr-[20px] text-white text-xl bg-gradient-to-b from-slate-500 to-slate-400">
                 {item.title}
                 <button
                   className="text-red-400 px-2 text-sm bg-gray-200 rounded-full border border-gray-500 hover:bg-white hover:text-red-600"
@@ -66,7 +58,7 @@ function App() {
                   X
                 </button>
               </div>
-              <div className="bg-white p-2 rounded-br-lg rounded-bl-lg">
+              <div className="bg-white p-2 rounded-br-[6px]] rounded-bl-[6px]">
                 {item.content}
               </div>
             </div>
@@ -74,16 +66,20 @@ function App() {
         );
       });
     };
-    return <ul className="flex flex-wrap gap-3">{renderList()}</ul>;
+    return (
+      <ul className="flex flex-col flex-wrap md:flex-row mx-auto max-w-5xl gap-3">
+        {renderList()}
+      </ul>
+    );
   };
 
   return (
-    <div className="App bg-gradient-to-r from-stone-300">
+    <div className="App">
       <Header />
       <div className="flex justify-center">
         <AddToList setItems={setItems} items={items} />
       </div>
-      <main className="flex flex-wrap gap-6 text-slate-600 mt-4">
+      <main className="text-slate-600 mt-4">
         <List items={items} />
       </main>
     </div>

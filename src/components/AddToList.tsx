@@ -53,7 +53,7 @@ const AddToList: React.FC<IProps> = ({ setItems, items }) => {
   };
 
   return (
-    <div className="m-8">
+    <div className="m-8 text-center">
       <input
         className="mx-3 border-2 border-orange-500 rounded-lg shadow-sm p-2"
         type="text"
@@ -71,7 +71,7 @@ const AddToList: React.FC<IProps> = ({ setItems, items }) => {
         name="content"
       />
       <button
-        className="text-slate-500 text-lg mx-3 bg-green-100 hover:bg-green-200 hover:text-slate-600 hover:shadow-xl border-2 border-white shadow-lg rounded-3xl px-2 py-1 mr-2"
+        className="text-white text-lg mx-3 bg-green-400 hover:bg-green-200 hover:text-slate-600 hover:shadow-xl border-3 border-white rounded-2xl px-5 py-1 mr-2"
         onClick={handleClick}
       >
         Add Card
