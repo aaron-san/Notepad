@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { IState as Props } from "../App";
+import React, { useState } from "react";
+import { IState as Props } from "../pages/Home";
 
 interface IProps {
   items: Props["items"];
@@ -53,9 +53,9 @@ const AddToList: React.FC<IProps> = ({ setItems, items }) => {
   };
 
   return (
-    <div className="m-8 text-center text-black">
+    <div className="m-8 text-center">
       <input
-        className="mx-3 border-2 bg-gray-300 hover:bg-gray-300 hover:font-gray-100 border-orange-500 rounded-lg shadow-sm p-2"
+        className="mx-3 border-2 text-gray-500 bg-gray-300 hover:bg-gray-200 border-orange-500 rounded-lg shadow-sm p-2"
         type="text"
         placeholder="Title"
         value={input.title}
@@ -63,7 +63,7 @@ const AddToList: React.FC<IProps> = ({ setItems, items }) => {
         name="title"
       />
       <input
-        className="m-3 border-2 text-black bg-gray-300 hover:bg-gray-300 border-orange-500 rounded-lg shadow-sm p-2"
+        className="m-3 border-2 text-gray-600 bg-gray-300 hover:bg-gray-200 border-orange-500 rounded-lg shadow-sm p-2"
         type="text"
         placeholder="Content"
         value={input.content}

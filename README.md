@@ -1,4 +1,7 @@
-npm install gh-pages
+`npm install react-router-dom --save`
+`npm install @types/react-router-dom --save`
+
+`npm install gh-pages`
 
 In package.json:
 
@@ -17,6 +20,19 @@ Add:
 git add .
 git commit -m "deploy website"
 git push
+
+# Firebase
+
+On Firebase admin site, click "Add app" (</>) icon.
+
+`npm install firebase`
+
+Create 'config' folder
+Add 'firebase.ts'
+
+Copy given code to firebase.s file
+
+`npm install react-firebase-hooks`
 
 # Getting Started with Create React App
 
