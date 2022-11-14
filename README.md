@@ -1,5 +1,6 @@
 `npm install react-router-dom --save`
 `npm install @types/react-router-dom --save`
+`npm i react-dotenv`
 
 `npm install gh-pages`
 
