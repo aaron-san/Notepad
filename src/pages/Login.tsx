@@ -16,7 +16,7 @@ const Login = () => {
       <p>Sign in with Google to continue</p>
       <button
         onClick={signInWithGoogle}
-        className="bg-white m-3 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        className="transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline divide-y divide-gray-200 bg-white m-3 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
       >
         Sign in with Google
       </button>

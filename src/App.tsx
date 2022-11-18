@@ -9,6 +9,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+// import AddNote from "./pages/AddNote/AddNote";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          {/* <Route path="/add-note" element={<AddNote />} /> */}
           {/* <Redirect to="/" /> */}
         </Routes>
       </Router>

@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import AddToList from "../components/AddToList";
+import FormModal from "../components/FormModal";
+// import AddNote from "./AddNote/AddNote";
+import Form from "../components/FormModal";
 
-export interface IState {
+export interface INote {
   items: {
     id: number;
     title: string;
     content: string;
+    username: string;
   }[];
 }
 
 function Home() {
-  const [items, setItems] = useState<IState["items"]>(() => {
+  const [items, setItems] = useState<INote["items"]>(() => {
     const savedItems: any = localStorage.getItem("items");
     const items = JSON.parse(savedItems);
     return items || [];
@@ -32,7 +35,7 @@ function Home() {
   };
 
   interface IProps {
-    items: IState["items"];
+    items: INote["items"];
   }
 
   const List: React.FC<IProps> = ({ items }) => {
@@ -44,7 +47,7 @@ function Home() {
               <div className="flex justify-between p-2 rounded-tr-[20px] text-white text-xl">
                 {item.title}
                 <button
-                  className="text-red-400 px-2 text-sm border-green-100 rounded-full border border-gray-500 hover:bg-white hover:text-red-600"
+                  className=" shadow transform transition ease-in-out duration-200 text-red-400 px-2 text-sm font-medium border-green-100 rounded-full border border-gray-500 hover:bg-white hover:text-red-600"
                   onClick={() => handleDelete(item.id)}
                 >
                   X
@@ -67,9 +70,6 @@ function Home() {
 
   return (
     <div className="App">
-      <div className="flex justify-center">
-        <AddToList setItems={setItems} items={items} />
-      </div>
       <main className="text-slate-600 mt-4">
         <List items={items} />
       </main>

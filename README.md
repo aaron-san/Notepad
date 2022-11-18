@@ -1,17 +1,14 @@
 `npm install react-router-dom --save`
 `npm install @types/react-router-dom --save`
 `npm i react-dotenv`
+`npm i react-hook-form yup @hookform/resolvers`
 
 `npm install gh-pages`
 
-In package.json:
-
-Add:
+In package.json, add:
 
 "homepage": "https://aaron-san.github.io/<repository>"
 "name": ...
-
-Add:
 
 "scripts": {
 "predeploy": "npm run build",
