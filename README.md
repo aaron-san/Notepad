@@ -15,9 +15,15 @@ In package.json, add:
 "deploy": "gh-pages -d build",
 }
 
+---
+
 git add .
 git commit -m "deploy website"
 git push
+
+---
+
+## firebase deploy
 
 # Firebase
 
