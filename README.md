@@ -17,13 +17,11 @@ In package.json, add:
 
 ---
 
-git add .
-git commit -m "deploy website"
-git push
+`git add .`
+`git commit -m "deploy website"`
+`git push`
 
----
-
-## firebase deploy
+`npm run deploy`
 
 # Firebase
 

@@ -4,6 +4,7 @@ import { auth } from "../config/firebase";
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import FormModal from "./FormModal";
+import { BsPlusCircleDotted } from "react-icons/bs";
 
 function Navbar() {
   const [user] = useAuthState(auth);
@@ -31,7 +32,7 @@ function Navbar() {
             className="p-2 hover:text-green-200"
             onClick={() => setShowModal(true)}
           >
-            Add Note
+            <BsPlusCircleDotted />
           </button>
           // </Link>
         )}
@@ -40,9 +41,9 @@ function Navbar() {
           {user && (
             <>
               <div className="mx-3 flex items-center">
-                <p className="text-sm">{user?.displayName}</p>
+                <p className="hidden lg:text-sm">{user?.displayName}</p>
                 <img
-                  className="mx-2 "
+                  className="mx-2 rounded-sm "
                   src={user?.photoURL || ""}
                   width="30"
                   height="30"

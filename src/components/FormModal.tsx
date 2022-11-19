@@ -51,7 +51,7 @@ const FormModal = ({ setShowModal }: any) => {
           <input
             placeholder="Title..."
             {...register("title")}
-            className="p-2 my-2 rounded-sm"
+            className="p-2 my-2 rounded-sm text-gray-600"
           />
           <p className="text-red-500">{errors.title?.message}</p>
           <textarea
