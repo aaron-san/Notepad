@@ -27,7 +27,7 @@ export const Main = () => {
   }, []);
 
   return (
-    <div className="text-white flex flex-wrap mx-60 my-12 gap-4">
+    <div className="text-white flex flex-wrap mx-0 md:mx-60 pt-[140px] gap-4 overflow-clip">
       {notesList?.map((note) => (
         <Note note={note} />
       ))}

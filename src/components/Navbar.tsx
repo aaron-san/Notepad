@@ -32,7 +32,7 @@ function Navbar() {
             {open ? <AiOutlineClose /> : <AiOutlineMenu />}
           </div>
           <ul
-            className={`md:flex md:items-center md:pb-0 pt-5 pb-12 absolute md:static bg-slate-200 md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-300 ease-in text-slate-500 ${
+            className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-slate-600 md:bg-none md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-300 ease-in text-white md:text-slate-500 ${
               open ? "top-[63px]" : "top-[-490px]"
             }`}
           >
@@ -43,7 +43,7 @@ function Navbar() {
             ) : (
               // <Link to="/add-note" className="p-2 hover:text-green-200">
               <button
-                className="px-3 py-1.5 mb-4 hover:text-green-200 mr-1 flex gap-2 items-center border border-slate-500 rounded-xl bg-green-500 text-white hover:bg-green-400 hover:text-white"
+                className="px-3 py-1.5 hover:text-green-200 mr-1 flex gap-2 items-center border border-slate-500 rounded-xl bg-green-500 text-white hover:bg-green-400 hover:text-white"
                 onClick={() => setShowModal(true)}
               >
                 <BsPlusCircleDotted />
@@ -55,7 +55,7 @@ function Navbar() {
             <div>
               {user && (
                 <>
-                  <div className="mx-3 flex items-center">
+                  <div className="mx-3 flex items-center md:text-white">
                     <p className="hidden lg:text-sm">{user?.displayName}</p>
                     <img
                       className="mx-0 rounded-sm "

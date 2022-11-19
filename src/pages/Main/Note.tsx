@@ -8,7 +8,7 @@ interface Props {
 export const Note = (props: Props) => {
   const { note } = props;
   return (
-    <div className="p-4 min-w-[200px] max-w-[300px] bg-slate-400/.8 mx-auto sm:w-80 border border-2 border-green-100 rounded-br-[6px] rounded-bl-[6px] rounded-tr-[20px] shadow-lg">
+    <div className="p-4 max-w-[300px] bg-slate-400/.8 mx-auto sm:w-80 border border-2 border-green-100 rounded-br-[6px] rounded-bl-[6px] rounded-tr-[20px] shadow-lg">
       <div className="flex justify-between p-2 rounded-tr-[20px] text-white text-xl">
         <h1>{note.title}</h1>
         <button

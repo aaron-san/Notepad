@@ -12,7 +12,7 @@ const Login = () => {
     navigate("/");
   };
   return (
-    <div className="text-gray-100 m-6 text-center">
+    <div className="text-gray-100 m-6 pt-[130px] text-center">
       <p>Sign in with Google to continue</p>
       <button
         onClick={signInWithGoogle}

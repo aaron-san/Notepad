@@ -44,7 +44,7 @@ const FormModal = ({ setShowModal }: any) => {
   };
 
   return (
-    <div className="fixed flex justify-center items-center bg-slate-300 z-50 left-0 top-0 h-full w-full z-[200]">
+    <div className="fixed flex justify-center items-center bg-slate-300 z-50 left-0 top-0 h-full w-full z-[90]">
       <div className="text-lg bg-slate-600 border border-white shadow-2xl shadow-slate-200 w-fit rounded-2xl px-12 py-7">
         <form onSubmit={handleSubmit(onAddNote)}>
           <h1 className="text-2xl text-white">Add a note</h1>
