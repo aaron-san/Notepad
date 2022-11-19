@@ -20,9 +20,9 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/notepad" element={<Main />} />
           {/* <Route path="/home" element={<Home />} /> */}
-          <Route path="/login" element={<Login />} />
+          <Route path="/notepad/login" element={<Login />} />
           {/* <Route path="/add-note" element={<AddNote />} /> */}
           {/* <Redirect to="/" /> */}
         </Routes>

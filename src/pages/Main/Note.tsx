@@ -21,7 +21,9 @@ export const Note = (props: Props) => {
       <div className="border-t text-gray-300 border-white p-2 rounded-br-[6px]] rounded-bl-[6px]">
         <p>{note.content}</p>
         <br />
-        <p className="text-sm">@{note.username}</p>
+        <p className="text-sm">
+          @{note.username.substring(0, 10).concat("...")}
+        </p>
       </div>
     </div>
   );
