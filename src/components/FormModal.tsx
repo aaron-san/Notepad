@@ -64,6 +64,7 @@ const FormModal = ({ setShowModal }: any) => {
           <input
             type="submit"
             className="m-2 h-30 cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline text-gray-600 bg-green-300 rounded border border-white p-2 shadow-md"
+            onClick={() => setShowModal(false)}
           />
           <button
             className="m-2 h-30 cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline text-gray-600 bg-red-300 rounded border border-white p-2 shadow-md"
