@@ -19,8 +19,8 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="shadow-md w-full fixed top-0 left-0 z-[100]">
-      <div className="md:flex items-center justify-between bg-slate-600 text-white text-3xl md:px-10 px-7 py-3 flex border-b-2 border-white">
+    <div className="shadow-sm w-full fixed top-0 left-0 z-[100]">
+      <div className="md:flex items-center justify-between bg-slate-200 text-slate-700 text-3xl md:px-10 px-7 py-3 flex">
         <Link to="/notepad">Notepad</Link>
         <div className="flex text-xl text-gray-200">
           <div
@@ -32,7 +32,7 @@ function Navbar() {
             {open ? <AiOutlineClose /> : <AiOutlineMenu />}
           </div>
           <ul
-            className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-slate-600 md:bg-none md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-300 ease-in text-white md:text-slate-500 ${
+            className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static sm:bg-slate-200 md:bg-none md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-300 ease-in text-slate-700 md:text-slate-700 ${
               open ? "top-[63px]" : "top-[-490px]"
             }`}
           >
@@ -55,7 +55,7 @@ function Navbar() {
             <div>
               {user && (
                 <>
-                  <div className="mx-3 flex items-center md:text-white">
+                  <div className="mx-3 flex items-center">
                     <p className="hidden lg:text-sm">{user?.displayName}</p>
                     <img
                       className="mx-0 rounded-sm "

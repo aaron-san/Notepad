@@ -10,6 +10,6 @@
 
 @layer component {
   .App {
-    @apply bg-gray-900 max-w-6xl;
+    @apply bg-slate-300 max-w-6xl;
   }
 }
