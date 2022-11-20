@@ -36,7 +36,7 @@ function Navbar() {
               open ? "top-0" : "top-[-490px]"
             }`}
           >
-            <div className="h-[400px] md:h-[30px] flex flex-col md:flex-row gap-4 md:gap-0 items-center justify-center md:items-center">
+            <div className="h-[400px] md:h-[30px] flex flex-col md:flex-row gap-6 md:gap-0 items-center justify-center md:items-center">
               <div className="">
                 {!user ? (
                   <Link

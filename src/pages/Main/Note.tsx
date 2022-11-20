@@ -27,7 +27,7 @@ export const Note = (props: Props) => {
       <div className="flex  justify-between p-2 rounded-tr-[20px] text-xl">
         <h1>{note.title}</h1>
         <button
-          className="shadow transform transition ease-in duration-200 text-red-400 px-2 text-sm font-medium border-red-400 rounded-full border border-gray-500 hover:bg-slate-100 hover:text-red-600 hover:shadow-xl"
+          className="shadow transform transition ease-in duration-200 text-red-300 px-2 text-sm font-medium border-red-300 rounded-full border border-gray-500 hover:bg-slate-100 hover:text-red-600 hover:shadow-xl"
           onClick={() => {
             onDelete(note.id);
           }}
@@ -35,7 +35,7 @@ export const Note = (props: Props) => {
           X
         </button>
       </div>
-      <div className="border-t text-gray-300 border-white p-2 rounded-br-[6px]] rounded-bl-[6px] text-slate-600">
+      <div className="border-t border-white p-2 rounded-br-[6px]] rounded-bl-[6px] text-slate-600">
         <p>{note.content}</p>
         <br />
         <p className="text-sm">
