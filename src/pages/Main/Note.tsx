@@ -1,5 +1,8 @@
 import React from "react";
 import { INote } from "./Main";
+import { db } from "../../config/firebase";
+import { doc, deleteDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   note: INote;
@@ -7,13 +10,27 @@ interface Props {
 
 export const Note = (props: Props) => {
   const { note } = props;
+
+  const navigate = useNavigate();
+
+  // const noteRef = collection(db, "notes");
+
+  const onDelete = async (id: string) => {
+    const noteDoc = doc(db, "notes", id);
+
+    await deleteDoc(noteDoc);
+    navigate("/notepad");
+  };
+
   return (
-    <div className="p-4 w-[400px] bg-slate-200 mx-auto sm:w-80 rounded-md shadow-xl text-slate-600">
-      <div className="flex justify-between p-2 rounded-tr-[20px] text-xl">
+    <div className="w-[93%] p-4 bg-slate-200 mx-auto sm:w-80 rounded-md shadow-xl text-slate-600">
+      <div className="flex  justify-between p-2 rounded-tr-[20px] text-xl">
         <h1>{note.title}</h1>
         <button
-          className="shadow transform transition ease-in-out duration-200 text-red-400 px-2 text-sm font-medium border-green-700 rounded-full border border-gray-500 hover:bg-gray-200 hover:text-red-600"
-          //   onClick={() => handleDelete(note.id)}
+          className="shadow transform transition ease-in duration-200 text-red-400 px-2 text-sm font-medium border-red-400 rounded-full border border-gray-500 hover:bg-slate-100 hover:text-red-600 hover:shadow-xl"
+          onClick={() => {
+            onDelete(note.id);
+          }}
         >
           X
         </button>
