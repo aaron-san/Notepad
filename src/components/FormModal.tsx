@@ -12,7 +12,7 @@ interface AddFormData {
   content: string;
 }
 
-const FormModal = ({ setShowModal }: any) => {
+const FormModal = ({ setShowModal, setIsMenuOpen }: any) => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -41,11 +41,12 @@ const FormModal = ({ setShowModal }: any) => {
 
     navigate("/notepad");
     setShowModal(false);
+    setIsMenuOpen(false);
   };
 
   return (
-    <div className="fixed flex justify-center items-center bg-slate-300 left-0 top-0 h-full w-full z-[90]">
-      <div className="text-lg bg-slate-500 border border-white shadow-2xl shadow-slate-200 w-fit rounded-2xl px-12 py-7">
+    <div className="fixed flex justify-center items-center bg-slate-300 left-0 top-0 h-full w-full z-[200]">
+      <div className="text-lg bg-slate-500 border border-white shadow-2xl shadow-slate-200 h-screen w-fit rounded-2xl px-12 py-7">
         <form onSubmit={handleSubmit(onAddNote)}>
           <h1 className="text-2xl text-slate-100">Add a note</h1>
           <input
@@ -64,7 +65,6 @@ const FormModal = ({ setShowModal }: any) => {
           <input
             type="submit"
             className="m-2 h-30 cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline text-gray-600 bg-green-300 rounded border border-white p-2 shadow-md"
-            // onClick={() => setShowModal(false)}
           />
           <button
             className="m-2 h-30 cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline text-gray-600 bg-red-300 rounded border border-white p-2 shadow-md"

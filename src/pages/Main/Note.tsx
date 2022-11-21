@@ -2,7 +2,7 @@ import React from "react";
 import { INote } from "./Main";
 import { db } from "../../config/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 interface Props {
   note: INote;
@@ -11,7 +11,7 @@ interface Props {
 export const Note = (props: Props) => {
   const { note } = props;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // const noteRef = collection(db, "notes");
 
@@ -19,7 +19,7 @@ export const Note = (props: Props) => {
     const noteDoc = doc(db, "notes", id);
 
     await deleteDoc(noteDoc);
-    navigate("/notepad");
+    // navigate("/notepad");
   };
 
   return (

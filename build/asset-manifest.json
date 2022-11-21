@@ -1,11 +1,18 @@
 {
   "files": {
-    "main.css": "/notepad/static/css/main.d42bc5ac.css",
-    "main.js": "/notepad/static/js/main.3f12982c.js",
+    "main.css": "/notepad/static/css/main.2c028bea.css",
+    "main.js": "/notepad/static/js/main.ffa0ebc5.js",
+    "static/media/HiMelody-Regular.ttf": "/notepad/static/media/HiMelody-Regular.984636f1dce3ac1821f6.ttf",
+    "static/media/Atma-Light.ttf": "/notepad/static/media/Atma-Light.5ec957711b5cf9324092.ttf",
+    "static/media/FingerPaint-Regular.ttf": "/notepad/static/media/FingerPaint-Regular.3c3a9cdbff527a1cdb37.ttf",
+    "static/media/ScopeOne-Regular.ttf": "/notepad/static/media/ScopeOne-Regular.e1c483807b74b3b19e69.ttf",
+    "static/media/PermanentMarker-Regular.ttf": "/notepad/static/media/PermanentMarker-Regular.109a10dca0508e41aa12.ttf",
     "static/media/roboto-all-500-normal.woff": "/notepad/static/media/roboto-all-500-normal.0ab669b7a0d19b178f57.woff",
     "static/media/roboto-all-700-normal.woff": "/notepad/static/media/roboto-all-700-normal.a457fde362a540fcadff.woff",
     "static/media/roboto-all-400-normal.woff": "/notepad/static/media/roboto-all-400-normal.c5d001fa922fa66a147f.woff",
     "static/media/roboto-all-300-normal.woff": "/notepad/static/media/roboto-all-300-normal.168d6383e73339293ac3.woff",
+    "static/media/Trykker-Regular.ttf": "/notepad/static/media/Trykker-Regular.3fb00dda5c64b887c559.ttf",
+    "static/media/Flamenco-Regular.ttf": "/notepad/static/media/Flamenco-Regular.beecf6cbc9b4f478ab15.ttf",
     "static/media/roboto-latin-500-normal.woff2": "/notepad/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
     "static/media/roboto-latin-700-normal.woff2": "/notepad/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
     "static/media/roboto-latin-400-normal.woff2": "/notepad/static/media/roboto-latin-400-normal.b009a76ad6afe4ebd301.woff2",
@@ -35,11 +42,11 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/notepad/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/notepad/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/notepad/index.html",
-    "main.d42bc5ac.css.map": "/notepad/static/css/main.d42bc5ac.css.map",
-    "main.3f12982c.js.map": "/notepad/static/js/main.3f12982c.js.map"
+    "main.2c028bea.css.map": "/notepad/static/css/main.2c028bea.css.map",
+    "main.ffa0ebc5.js.map": "/notepad/static/js/main.ffa0ebc5.js.map"
   },
   "entrypoints": [
-    "static/css/main.d42bc5ac.css",
-    "static/js/main.3f12982c.js"
+    "static/css/main.2c028bea.css",
+    "static/js/main.ffa0ebc5.js"
   ]
 }

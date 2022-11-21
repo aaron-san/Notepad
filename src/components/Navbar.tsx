@@ -16,7 +16,7 @@ function Navbar() {
 
   const [showModal, setShowModal] = useState(false);
 
-  const [open, setOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="shadow-sm w-full fixed top-0 left-0 z-[100]">
@@ -29,16 +29,16 @@ function Navbar() {
         </Link>
         <div className="flex text-xl text-gray-200 justify-center items-center">
           <div
-            onClick={() => setOpen(!open)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`text-2xl absolute right-6 top-5 cursor-pointer md:hidden ${
-              open ? "text-slate-100" : "text-slate-600"
+              isMenuOpen ? "text-slate-100" : "text-slate-600"
             } z-[100]`}
           >
-            {open ? <AiOutlineClose /> : <AiOutlineMenu />}
+            {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
           </div>
           <ul
             className={`md:pb-0 pb-12 absolute md:static bg-slate-500 md:bg-inherit md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 transition-all duration-300 ease-in text-slate-100 md:text-slate-700 ${
-              open ? "top-0" : "top-[-490px]"
+              isMenuOpen ? "top-0" : "top-[-490px]"
             }`}
           >
             <div className="h-[400px] md:h-[30px] flex flex-col md:flex-row gap-6 md:gap-0 items-center justify-center md:items-center">
@@ -89,7 +89,9 @@ function Navbar() {
           </ul>
         </div>
       </div>
-      {showModal && <FormModal setShowModal={setShowModal} />}
+      {showModal && (
+        <FormModal setShowModal={setShowModal} setIsMenuOpen={setIsMenuOpen} />
+      )}
     </div>
   );
 }
