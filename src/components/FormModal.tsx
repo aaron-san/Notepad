@@ -7,7 +7,7 @@ import { auth, db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 
-interface addFormData {
+interface AddFormData {
   title: string;
   content: string;
 }
@@ -25,13 +25,12 @@ const FormModal = ({ setShowModal }: any) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<addFormData>({
+  } = useForm<AddFormData>({
     resolver: yupResolver(schema),
   });
-
   const noteRef = collection(db, "notes");
 
-  const onAddNote = async (data: addFormData) => {
+  const onAddNote = async (data: AddFormData) => {
     await addDoc(noteRef, {
       ...data,
       // title: data.title,
@@ -41,16 +40,13 @@ const FormModal = ({ setShowModal }: any) => {
     });
 
     navigate("/notepad");
+    setShowModal(false);
   };
 
   return (
     <div className="fixed flex justify-center items-center bg-slate-300 left-0 top-0 h-full w-full z-[90]">
       <div className="text-lg bg-slate-500 border border-white shadow-2xl shadow-slate-200 w-fit rounded-2xl px-12 py-7">
-        <form
-          onSubmit={() => {
-            handleSubmit(onAddNote);
-          }}
-        >
+        <form onSubmit={handleSubmit(onAddNote)}>
           <h1 className="text-2xl text-slate-100">Add a note</h1>
           <input
             placeholder="Title..."

@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "FingerPaint";
+  src: local("FingerPaint"), url("./fonts/Finger_Paint/FingerPaint-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PermanentMarker";
+  src: local("PermanentMarker"), url("./fonts/Permanent_Marker/PermanentMarker-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Flamenco";
+  src: local("Flamenco"), url("./fonts/Flamenco/Flamenco-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Atma-Medium";
+  src: local("Atma-Medium"), url("./fonts/Atma/Atma-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "HiMelody-Regular";
+  src: local("HiMelody-Regular"), url("./fonts/Hi_Melody/HiMelody-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Trykker-Regular";
+  src: local("Trykker-Regular"), url("./fonts/Trykker/Trykker-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "ScopeOne-Regular";
+  src: local("ScropeOne-Regular"), url("./fonts/Scope_One/ScopeOne-Regular.ttf") format("truetype");
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

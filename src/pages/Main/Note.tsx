@@ -25,7 +25,7 @@ export const Note = (props: Props) => {
   return (
     <div className="w-[93%] p-4 bg-slate-200 mx-auto sm:w-80 rounded-md shadow-xl text-slate-600">
       <div className="flex  justify-between p-2 rounded-tr-[20px] text-xl">
-        <h1>{note.title}</h1>
+        <h1 className="font-[ScopeOne-Regular]">{note.title}</h1>
         <button
           className="shadow transform transition ease-in duration-200 text-red-300 px-2 text-sm font-medium border-red-300 rounded-full border border-gray-500 hover:bg-slate-100 hover:text-red-600 hover:shadow-xl"
           onClick={() => {

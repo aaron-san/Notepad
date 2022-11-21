@@ -20,12 +20,17 @@ function Navbar() {
 
   return (
     <div className="shadow-sm w-full fixed top-0 left-0 z-[100]">
-      <div className="md:flex items-center justify-between bg-slate-200 text-slate-700 text-3xl md:px-10 px-7 py-3 flex">
-        <Link to="/notepad">Notepad</Link>
+      <div className="md:flex items-center justify-between bg-slate-200 text-slate-700 text-3xl md:px-10 px-3 py-3 flex">
+        <Link
+          to="/notepad"
+          className="font-[Trykker-Regular] text-3xl md:text-4xl"
+        >
+          Notepad
+        </Link>
         <div className="flex text-xl text-gray-200 justify-center items-center">
           <div
             onClick={() => setOpen(!open)}
-            className={`text-2xl absolute right-8 top-6 cursor-pointer md:hidden ${
+            className={`text-2xl absolute right-6 top-5 cursor-pointer md:hidden ${
               open ? "text-slate-100" : "text-slate-600"
             } z-[100]`}
           >
