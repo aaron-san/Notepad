@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/notepad/static/css/main.93d43dc6.css",
-    "main.js": "/notepad/static/js/main.ad055573.js",
+    "main.css": "/notepad/static/css/main.8f06a273.css",
+    "main.js": "/notepad/static/js/main.add356d7.js",
     "static/media/HiMelody-Regular.ttf": "/notepad/static/media/HiMelody-Regular.984636f1dce3ac1821f6.ttf",
     "static/media/Atma-Light.ttf": "/notepad/static/media/Atma-Light.5ec957711b5cf9324092.ttf",
     "static/media/FingerPaint-Regular.ttf": "/notepad/static/media/FingerPaint-Regular.3c3a9cdbff527a1cdb37.ttf",
@@ -42,11 +42,11 @@
     "static/media/roboto-greek-ext-300-normal.woff2": "/notepad/static/media/roboto-greek-ext-300-normal.35b9d6be04b95f0f0530.woff2",
     "static/media/roboto-greek-ext-700-normal.woff2": "/notepad/static/media/roboto-greek-ext-700-normal.bd9854c751441ccc1a70.woff2",
     "index.html": "/notepad/index.html",
-    "main.93d43dc6.css.map": "/notepad/static/css/main.93d43dc6.css.map",
-    "main.ad055573.js.map": "/notepad/static/js/main.ad055573.js.map"
+    "main.8f06a273.css.map": "/notepad/static/css/main.8f06a273.css.map",
+    "main.add356d7.js.map": "/notepad/static/js/main.add356d7.js.map"
   },
   "entrypoints": [
-    "static/css/main.93d43dc6.css",
-    "static/js/main.ad055573.js"
+    "static/css/main.8f06a273.css",
+    "static/js/main.add356d7.js"
   ]
 }

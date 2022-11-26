@@ -27,7 +27,7 @@ export const Main = (props: Props) => {
   }, []);
 
   return (
-    <div className="text-white flex justify-start flex-wrap mx-0 md:mx-60 pt-[80px] gap-7 overflow-clip">
+    <div className="text-white flex flex-column justify-center md:flex-row md:justify-start flex-wrap mx-0 md:mx-60 pt-[80px] gap-7 overflow-clip">
       {notesList?.map((note) => (
         <Note
           note={note}
