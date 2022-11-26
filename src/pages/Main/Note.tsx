@@ -1,15 +1,17 @@
 import React from "react";
-import { INote } from "./Main";
+import { INote } from "../../App";
 import { db } from "../../config/firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 // import { useNavigate } from "react-router-dom";
 
 interface Props {
   note: INote;
+  notesList: INote[];
+  setNotesList: (arg: INote[]) => void;
 }
 
 export const Note = (props: Props) => {
-  const { note } = props;
+  const { note, notesList, setNotesList } = props;
 
   // const navigate = useNavigate();
 
@@ -20,10 +22,11 @@ export const Note = (props: Props) => {
 
     await deleteDoc(noteDoc);
     // navigate("/notepad");
+    setNotesList(notesList.filter((note) => note.id !== id));
   };
 
   return (
-    <div className="w-[93%] p-4 bg-slate-200 mx-auto sm:w-80 rounded-md shadow-xl text-slate-600">
+    <div className="w-[93%] p-4 bg-slate-200 sm:w-80 rounded-md shadow-xl text-slate-600">
       <div className="flex  justify-between p-2 rounded-tr-[20px] text-xl">
         <h1 className="font-[ScopeOne-Regular]">{note.title}</h1>
         <button

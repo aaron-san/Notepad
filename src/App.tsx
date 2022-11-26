@@ -4,7 +4,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 // import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -14,13 +14,25 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main/Main";
 
+export interface INote {
+  id: string;
+  userId: string;
+  title: string;
+  username: string;
+  content: string;
+}
+
 function App() {
+  const [notesList, setNotesList] = useState<INote[] | null>(null);
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar notesList={notesList} setNotesList={setNotesList} />
         <Routes>
-          <Route path="/notepad" element={<Main />} />
+          <Route
+            path="/notepad"
+            element={<Main notesList={notesList} setNotesList={setNotesList} />}
+          />
           {/* <Route path="/home" element={<Home />} /> */}
           <Route path="/notepad/login" element={<Login />} />
           {/* <Route path="/add-note" element={<AddNote />} /> */}

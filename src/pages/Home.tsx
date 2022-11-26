@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import FormModal from "../components/FormModal";
 // import AddNote from "./AddNote/AddNote";
-import Form from "../components/FormModal";
 
 export interface INote {
   items: {

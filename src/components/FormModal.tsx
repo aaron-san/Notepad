@@ -6,13 +6,19 @@ import { addDoc, collection } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import { INote } from "../App";
 
 interface AddFormData {
   title: string;
   content: string;
 }
 
-const FormModal = ({ setShowModal, setIsMenuOpen }: any) => {
+const FormModal = ({
+  setShowModal,
+  setIsMenuOpen,
+  notesList,
+  setNotesList,
+}: any) => {
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -38,6 +44,37 @@ const FormModal = ({ setShowModal, setIsMenuOpen }: any) => {
       username: user?.displayName,
       userId: user?.uid,
     });
+
+    //---------------------------------
+    //notesList is an array of objects
+    //data is an object
+    //---------------------------------
+
+    setNotesList([
+      ...notesList,
+      {
+        ...data,
+        username: user?.displayName,
+        userId: user?.uid,
+        id: Date(),
+      },
+    ]);
+
+    // const dt = new Date();
+    // console.log(dt);
+    // console.log(notesList);
+    // console.log(data);
+    // console.log([
+    //   ...notesList,
+    //   {
+    //     ...data,
+    //     username: user?.displayName,
+    //     userId: user?.uid,
+    //   },
+    // ]);
+    // console.log(user?.uid);
+
+    // console.log(notesList);
 
     navigate("/notepad");
     setShowModal(false);

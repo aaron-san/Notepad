@@ -6,8 +6,17 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import FormModal from "./FormModal";
 import { BsPlusCircleDotted } from "react-icons/bs";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { INote } from "../App";
 
-function Navbar() {
+interface Props {
+  notesList: INote[] | null;
+  setNotesList: (arg: INote[]) => void;
+}
+
+function Navbar(props: Props) {
+  const notesList = props.notesList;
+  const setNotesList = props.setNotesList;
+
   const [user] = useAuthState(auth);
 
   const signUserOut = async () => {
@@ -90,7 +99,12 @@ function Navbar() {
         </div>
       </div>
       {showModal && (
-        <FormModal setShowModal={setShowModal} setIsMenuOpen={setIsMenuOpen} />
+        <FormModal
+          setShowModal={setShowModal}
+          setIsMenuOpen={setIsMenuOpen}
+          notesList={notesList}
+          setNotesList={setNotesList}
+        />
       )}
     </div>
   );
