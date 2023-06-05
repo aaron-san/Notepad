@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import FormModal from "../components/FormModal";
+// import FormModal from "../components/FormModal";
 // import AddNote from "./AddNote/AddNote";
 
 export interface INote {
@@ -27,10 +27,7 @@ function Home() {
     const filteredItems = items.filter((item) => {
       return item.id !== id;
     });
-
     setItems(filteredItems);
-    // setNotes([...notes].filter((note) => note.id !== id));
-    // setItems([...items].filter((item) => item.id !== id));
   };
 
   interface IProps {

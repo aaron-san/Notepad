@@ -6,7 +6,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { INote } from "../App";
+// import { INote } from "../App";
 
 interface AddFormData {
   title: string;
@@ -76,27 +76,27 @@ const FormModal = ({
 
     // console.log(notesList);
 
-    navigate("/notepad");
+    // navigate("/notepad");
     setShowModal(false);
     setIsMenuOpen(false);
   };
 
   return (
-    <div className="fixed flex justify-center items-center bg-slate-300 left-0 top-0 h-full w-full z-[200]">
-      <div className="text-lg bg-slate-500 border border-white shadow-2xl shadow-slate-200 h-screen w-fit rounded-2xl px-12 py-7">
+    <div className="p-7 fixed flex justify-center items-center bg-slate-300 left-0 top-0 h-full w-full z-[200]">
+      <div className="text-lg m-7 bg-slate-500 border border-white shadow-2xl shadow-slate-200 md:w-[50%] rounded-2xl px-10 py-7">
         <form onSubmit={handleSubmit(onAddNote)}>
-          <h1 className="text-2xl text-slate-100">Add a note</h1>
+          <h1 className="text-2xl text-slate-100 w-[80%]">Add a note</h1>
           <input
             placeholder="Title..."
             {...register("title")}
-            className="p-2 my-2 rounded-sm text-gray-600"
+            className="p-2 my-2 w-[100%] rounded-sm text-gray-600"
           />
           <p className="text-red-500">{errors.title?.message}</p>
           <textarea
             rows={4}
             placeholder="Content..."
             {...register("content")}
-            className="p-2 w-[230px] rounded-sm text-gray-600"
+            className="p-2 w-[100%] rounded-sm text-gray-600"
           />
           <p className="text-red-500">{errors.content?.message}</p>
           <input

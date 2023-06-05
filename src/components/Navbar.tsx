@@ -24,8 +24,9 @@ function Navbar(props: Props) {
   };
 
   const [showModal, setShowModal] = useState(false);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
 
   return (
     <div className="shadow-sm w-full fixed top-0 left-0 z-[100]">
@@ -61,13 +62,15 @@ function Navbar(props: Props) {
                   </Link>
                 ) : (
                   // <Link to="/add-note" className="p-2 hover:text-green-200">
-                  <button
-                    className="px-3 py-1.5 hover:text-green-200 mr-1 flex gap-2 items-center border border-slate-500 rounded-xl bg-green-500 text-white hover:bg-green-400 hover:text-white"
-                    onClick={() => setShowModal(true)}
-                  >
-                    <BsPlusCircleDotted />
-                    <p>Add note</p>
-                  </button>
+                  <div className="flex gap-2">
+                    <button
+                      className="px-3 py-1.5 hover:text-green-200 mr-1 flex gap-2 items-center border border-slate-500 rounded-xl bg-green-500 text-white hover:bg-green-400 hover:text-white"
+                      onClick={() => setShowModal(true)}
+                    >
+                      <BsPlusCircleDotted />
+                      <p>Add note</p>
+                    </button>
+                  </div>
                   // </Link>
                 )}
               </div>

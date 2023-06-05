@@ -1,5 +1,11 @@
 See live at https://aaron-san.github.io/notepad
 
+# Run on local server
+
+```shell
+npm run start
+```
+
 # Deployment
 
 - Deployed on GitHub Pages:

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import { Note } from "./Note";
+import Note from "./Note";
 import { INote } from "../../App";
 
 interface Props {
@@ -15,14 +15,19 @@ export const Main = (props: Props) => {
 
   const notesRef = collection(db, "notes");
 
-  const getNotes = async () => {
-    const data = await getDocs(notesRef);
-    setNotesList(
-      data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) as INote[]
-    );
-  };
-
   useEffect(() => {
+    const getNotes = async () => {
+      try {
+        const data = await getDocs(notesRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        })) as INote[];
+        setNotesList(filteredData);
+      } catch (err) {
+        console.error(err);
+      }
+    };
     getNotes();
   }, []);
 
