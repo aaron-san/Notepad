@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { INote } from "../../App";
 import { db } from "../../config/firebase";
 import { doc, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { FiEdit2 } from "react-icons/fi";
+import { AiOutlineEdit } from "react-icons/ai";
 import { AiOutlineSave } from "react-icons/ai";
 // import EditModal from "../../components/EditModal";
 
@@ -19,10 +19,16 @@ const Note = (props: Props) => {
   const [showTitleInput, setShowTitleInput] = useState(false);
   const [showContentInput, setShowContentInput] = useState(false);
 
-  const [updatedTitle, setUpdatedTitle] = useState("");
-  const [updatedContent, setUpdatedContent] = useState("");
-
   const { note, notesList, setNotesList } = props;
+
+  const [updatedTitle, setUpdatedTitle] = useState(note.title);
+  const [updatedContent, setUpdatedContent] = useState(note.content);
+
+  // Initialize updatedTitle and updatedConent variables
+  // useEffect(() => {
+  //   setUpdatedTitle(note.title);
+  //   setUpdatedContent(note.content);
+  // }, []);
 
   const navigate = useNavigate();
 
@@ -38,44 +44,66 @@ const Note = (props: Props) => {
     }
   };
 
-  const updateTitle = async (id: string) => {
-    const noteDoc = doc(db, "notes", id);
-    await updateDoc(noteDoc, {
-      title: updatedTitle,
-    });
-    setShowTitleInput(false);
+  const updateTitle = async (id: string, prevTitle: string) => {
+    if (updatedTitle === prevTitle) {
+      setShowTitleInput(false);
+      return;
+    }
 
-    const updatedNotesList = notesList.map((doc) => {
-      if (doc.id === id) {
-        const updatedNote = {
-          ...doc,
-          title: updatedTitle,
-        };
-        return updatedNote;
-      }
-      return doc;
-    });
-    setNotesList(updatedNotesList);
+    if (updatedTitle === "") {
+      setShowTitleInput(false);
+      return;
+      // window.confirm("Title is blank. Is this okay?");
+    } else if (updatedTitle !== prevTitle) {
+      const noteDoc = doc(db, "notes", id);
+      await updateDoc(noteDoc, {
+        title: updatedTitle,
+      });
+      setShowTitleInput(false);
+
+      const updatedNotesList = notesList.map((doc) => {
+        if (doc.id === id) {
+          const updatedNote = {
+            ...doc,
+            title: updatedTitle,
+          };
+          return updatedNote;
+        }
+        return doc;
+      });
+      setNotesList(updatedNotesList);
+    }
   };
 
-  const updateContent = async (id: string) => {
-    const noteDoc = doc(db, "notes", id);
-    await updateDoc(noteDoc, {
-      content: updatedContent,
-    });
-    setShowContentInput(false);
+  const updateContent = async (id: string, prevContent: string) => {
+    if (updatedContent === prevContent) {
+      setShowContentInput(false);
+      return;
+    }
 
-    const updatedNotesList = notesList.map((doc) => {
-      if (doc.id === id) {
-        const updatedNote = {
-          ...doc,
-          content: updatedContent,
-        };
-        return updatedNote;
-      }
-      return doc;
-    });
-    setNotesList(updatedNotesList);
+    if (updatedContent === "") {
+      setShowContentInput(false);
+      return;
+    } else if (updatedContent !== prevContent) {
+      const noteDoc = doc(db, "notes", id);
+      await updateDoc(noteDoc, {
+        content: updatedContent === prevContent ? prevContent : updatedContent,
+      });
+      setShowContentInput(false);
+
+      const updatedNotesList = notesList.map((doc) => {
+        if (doc.id === id) {
+          const updatedNote = {
+            ...doc,
+            content:
+              updatedContent === prevContent ? prevContent : updatedContent,
+          };
+          return updatedNote;
+        }
+        return doc;
+      });
+      setNotesList(updatedNotesList);
+    }
   };
 
   // const onEdit = async (id: string) => {
@@ -89,84 +117,108 @@ const Note = (props: Props) => {
   // };
 
   return (
-    <div className="w-[93%] p-4 bg-slate-200 sm:w-85 rounded-md shadow-xl text-slate-600">
-      <div className="flex justify-between p-2 rounded-tr-[20px] text-xl">
-        <div className="title-container">
-          {!showTitleInput && (
-            <h1 className="font-[ScopeOne-Regular]">{note.title}</h1>
-          )}
-          {showTitleInput && (
-            <div>
-              <input
-                className="title-input"
-                type="text"
-                placeholder={note.title}
-                onChange={(e) => setUpdatedTitle(e.target.value)}
-              />
-              <button onClick={() => updateTitle(note.id)}>
-                <AiOutlineSave />
+    <div className="note-card">
+      <div>
+        {/* className="w-[93%] p-4 bg-slate-200 sm:w-85 rounded-md shadow-xl text-slate-600"> */}
+        <div className="flex justify-between p-2 rounded-tr-[20px] text-xl">
+          <div className="title-container">
+            {!showTitleInput && (
+              <h1 className="font-[ScopeOne-Regular] title">{note.title}</h1>
+            )}
+            {showTitleInput && (
+              <div>
+                <textarea
+                  className="title-input"
+                  rows={1}
+                  cols={50}
+                  placeholder="Enter a title..."
+                  value={updatedTitle}
+                  onChange={
+                    (e) => setUpdatedTitle(e.target.value)
+                    // if (storedTitle !== "") {
+                    // setUpdatedTitle(e.target.value);
+                    // setStoredTitle(e.target.value);
+                    // }
+
+                    // note.title
+                  }
+                />
+                <button onClick={() => updateTitle(note.id, note.title)}>
+                  <AiOutlineSave />
+                </button>
+              </div>
+            )}
+          </div>
+          <div className="flex align-center">
+            {!showTitleInput && (
+              <button
+                className=" transform transition ease-in duration-100 px-2 mr-1 text-md font-medium rounded-sm"
+                onClick={() => {
+                  showTitleInput
+                    ? setShowTitleInput(false)
+                    : setShowTitleInput(true);
+                }}
+              >
+                <AiOutlineEdit />
               </button>
-            </div>
-          )}
-
-          {!showTitleInput && (
+            )}
             <button
-              className="shadow transform transition ease-in duration-100 px-2 text-sm font-medium rounded-sm"
+              className="text-red-300 px-2 text-sm font-medium rounded-full hover:bg-slate-100 hover:text-red-600 hover:shadow-xl"
               onClick={() => {
-                showTitleInput
-                  ? setShowTitleInput(false)
-                  : setShowTitleInput(true);
+                onDelete(note.id);
               }}
             >
-              <FiEdit2 />
+              X
             </button>
-          )}
-        </div>
-        <button
-          className="shadow transform transition ease-in duration-200 text-red-300 px-2 text-sm font-medium border-red-300 rounded-full border border-gray-500 hover:bg-slate-100 hover:text-red-600 hover:shadow-xl"
-          onClick={() => {
-            onDelete(note.id);
-          }}
-        >
-          X
-        </button>
+          </div>
 
-        {/* <input type="text" value={note.content} /> */}
-      </div>
-
-      {showContentInput && (
-        <div>
-          <input
-            className="content-input"
-            type="text"
-            placeholder={note.content}
-            onChange={(e) => setUpdatedContent(e.target.value)}
-          />
-          <button onClick={() => updateContent(note.id)}>
-            <AiOutlineSave />
-          </button>
+          {/* <input type="text" value={note.content} /> */}
         </div>
-      )}
-      <div className="border-t border-white p-2 rounded-br-[6px]] rounded-bl-[6px] text-slate-600">
-        <div className="flex gap-1">
-          <p>{note.content}</p>
-          {!showContentInput && (
+
+        {showContentInput && (
+          <div className="">
+            <textarea
+              className="content-input"
+              rows={4}
+              cols={80}
+              placeholder="Enter content..."
+              value={updatedContent}
+              onChange={
+                (e) => setUpdatedContent(e.target.value)
+                // setUpdatedContent(
+                //   e.target.value === "" ? note.content : e.target.value
+                // )
+              }
+            />
             <button
-              className="shadow transform transition ease-in duration-100 px-2 text-sm font-medium rounded-sm"
-              onClick={() => {
-                showContentInput
-                  ? setShowContentInput(false)
-                  : setShowContentInput(true);
-              }}
+              className="m-2"
+              onClick={() => updateContent(note.id, note.content)}
             >
-              <FiEdit2 />
+              <AiOutlineSave />
             </button>
-          )}
+          </div>
+        )}
+        <div className="border-t border-white p-2 rounded-br-[6px]] rounded-bl-[6px] text-slate-600">
+          <div className="flex gap-1">
+            {!showContentInput && <p>{note.content}</p>}
+            {!showContentInput && (
+              <button
+                className="transform transition ease-in duration-100 px-2 text-sm font-medium rounded-sm"
+                onClick={() => {
+                  showContentInput
+                    ? setShowContentInput(false)
+                    : setShowContentInput(true);
+                }}
+              >
+                <AiOutlineEdit />
+              </button>
+            )}
+          </div>
+          <br />
+          <p className="text-sm">
+            @{note.username.substring(0, 10).concat("...")}
+          </p>
         </div>
-        <br />
-        <p className="text-sm">
-          @{note.username.substring(0, 10).concat("...")}
-        </p>
       </div>
     </div>
   );
