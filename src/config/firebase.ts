@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth, GoogleAuthProvider} from "firebase/auth";
+import {getAuth, GoogleAuthProvider, setPersistence, signInWithPopup, browserSessionPersistence} from "firebase/auth";
 import {getFirestore} from "firebase/firestore"
 
 // import { getAnalytics } from "firebase/analytics";
@@ -23,5 +23,31 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
 export const auth = getAuth(app);
+export const signInWithGoogle = async () => {
+  
+  setPersistence(auth, browserSessionPersistence)
+    .then(() => {
+      // Existing and future Auth states are now persisted in the current
+      // session only. Closing the window would clear any existing state even
+      // if a user forgets to sign out.
+      // ...
+      // New sign-in will be persisted with session persistence.
+      return signInWithPopup(auth, provider);
+    })
+    .then(() => window.location.href = "/notepad")
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+    })
+    
+    
+  };
+
+
+
+
+
+
 export const provider = new GoogleAuthProvider();
 export const db = getFirestore(app);

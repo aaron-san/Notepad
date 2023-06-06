@@ -14,20 +14,20 @@
   }
 }
 
-.title-container {
-  display: flex;
-  gap: 5px;
-}
-
 .title-input {
+  color: black;
   padding: 2px;
+  border: 2px solid blue;
 }
 
 textarea {
+  color: black;
   padding: 5px;
 }
 
 .note-card {
+  max-width: 600px;
+  padding: 5px;
   border-radius: 5px;
   background-color: #fff;
   background-image: linear-gradient(
@@ -36,7 +36,7 @@ textarea {
       /* #abced4 79px, */ /* #abced4 81px, */ transparent 81px
     ),
     linear-gradient(#eee 0.1em, transparent 0.1em);
-  background-size: 100% 1.3em;
+  background-size: 90% 1.4em;
 }
 
 .title {

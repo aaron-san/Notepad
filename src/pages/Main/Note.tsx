@@ -3,8 +3,8 @@ import { INote } from "../../App";
 import { db } from "../../config/firebase";
 import { doc, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineEdit } from "react-icons/ai";
-import { AiOutlineSave } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineSave, AiOutlineDelete } from "react-icons/ai";
+
 // import EditModal from "../../components/EditModal";
 
 interface Props {
@@ -18,6 +18,7 @@ const Note = (props: Props) => {
   // const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [showTitleInput, setShowTitleInput] = useState(false);
   const [showContentInput, setShowContentInput] = useState(false);
+  const [showDeleteButton, setShowDeleteButton] = useState(true);
 
   const { note, notesList, setNotesList } = props;
 
@@ -47,11 +48,13 @@ const Note = (props: Props) => {
   const updateTitle = async (id: string, prevTitle: string) => {
     if (updatedTitle === prevTitle) {
       setShowTitleInput(false);
+      setShowDeleteButton(true);
       return;
     }
 
     if (updatedTitle === "") {
       setShowTitleInput(false);
+      setShowDeleteButton(true);
       return;
       // window.confirm("Title is blank. Is this okay?");
     } else if (updatedTitle !== prevTitle) {
@@ -60,6 +63,7 @@ const Note = (props: Props) => {
         title: updatedTitle,
       });
       setShowTitleInput(false);
+      setShowDeleteButton(true);
 
       const updatedNotesList = notesList.map((doc) => {
         if (doc.id === id) {
@@ -121,99 +125,96 @@ const Note = (props: Props) => {
       <div>
         {/* className="w-[93%] p-4 bg-slate-200 sm:w-85 rounded-md shadow-xl text-slate-600"> */}
         <div className="flex justify-between p-2 rounded-tr-[20px] text-xl">
-          <div className="title-container">
-            {!showTitleInput && (
+          {/* <div className="flex"> */}
+          {!showTitleInput && (
+            <div className="flex gapx-2">
               <h1 className="font-[ScopeOne-Regular] title">{note.title}</h1>
-            )}
-            {showTitleInput && (
-              <div>
-                <textarea
-                  className="title-input"
-                  rows={1}
-                  cols={50}
-                  placeholder="Enter a title..."
-                  value={updatedTitle}
-                  onChange={
-                    (e) => setUpdatedTitle(e.target.value)
-                    // if (storedTitle !== "") {
-                    // setUpdatedTitle(e.target.value);
-                    // setStoredTitle(e.target.value);
-                    // }
 
-                    // note.title
-                  }
-                />
-                <button onClick={() => updateTitle(note.id, note.title)}>
-                  <AiOutlineSave />
-                </button>
-              </div>
-            )}
-          </div>
-          <div className="flex align-center">
-            {!showTitleInput && (
               <button
-                className=" transform transition ease-in duration-100 px-2 mr-1 text-md font-medium rounded-sm"
+                className="text-gray-200 hover:text-gray-800 transform transition ease-in duration-100 px-2 mr-1 text-md font-large rounded-sm"
                 onClick={() => {
                   showTitleInput
                     ? setShowTitleInput(false)
                     : setShowTitleInput(true);
+                  setShowDeleteButton(false);
                 }}
               >
-                <AiOutlineEdit />
+                <AiOutlineEdit size={22} />
               </button>
-            )}
+            </div>
+          )}
+          {showTitleInput && (
+            <div className="flex align-center">
+              <textarea
+                className="title-input"
+                rows={1}
+                cols={50}
+                placeholder="Enter a title..."
+                value={updatedTitle}
+                onChange={(e) => setUpdatedTitle(e.target.value)}
+              />
+              <button
+                className="text-xl border border-blue-300 mx-3 p-2 rounded-xl bg-white hover:bg-emerald-300 transition ease-in duration-200"
+                onClick={() => updateTitle(note.id, note.title)}
+              >
+                <AiOutlineSave size={22} />
+              </button>
+            </div>
+          )}
+
+          {showDeleteButton && (
             <button
-              className="text-red-300 px-2 text-sm font-medium rounded-full hover:bg-slate-100 hover:text-red-600 hover:shadow-xl"
+              className="text-red-200 px-2 text-sm font-medium rounded-full  hover:text-red-600"
               onClick={() => {
                 onDelete(note.id);
               }}
             >
-              X
+              <AiOutlineDelete size={20} />
             </button>
-          </div>
+          )}
 
           {/* <input type="text" value={note.content} /> */}
         </div>
 
-        {showContentInput && (
-          <div className="">
-            <textarea
-              className="content-input"
-              rows={4}
-              cols={80}
-              placeholder="Enter content..."
-              value={updatedContent}
-              onChange={
-                (e) => setUpdatedContent(e.target.value)
-                // setUpdatedContent(
-                //   e.target.value === "" ? note.content : e.target.value
-                // )
-              }
-            />
-            <button
-              className="m-2"
-              onClick={() => updateContent(note.id, note.content)}
-            >
-              <AiOutlineSave />
-            </button>
-          </div>
-        )}
-        <div className="border-t border-white p-2 rounded-br-[6px]] rounded-bl-[6px] text-slate-600">
+        <div className="border-t border-red-500 p-2 rounded-br-[6px]] rounded-bl-[6px] text-slate-600">
           <div className="flex gap-1">
             {!showContentInput && <p>{note.content}</p>}
             {!showContentInput && (
               <button
-                className="transform transition ease-in duration-100 px-2 text-sm font-medium rounded-sm"
+                className="text-gray-200 hover:text-gray-900 transform transition ease-in duration-100 px-2 text-xl font-large rounded-sm"
                 onClick={() => {
                   showContentInput
                     ? setShowContentInput(false)
                     : setShowContentInput(true);
                 }}
               >
-                <AiOutlineEdit />
+                <AiOutlineEdit size={22} />
               </button>
             )}
           </div>
+          {showContentInput && (
+            <div className="">
+              <textarea
+                className="border border-blue-300"
+                rows={4}
+                cols={80}
+                placeholder="Enter content..."
+                value={updatedContent}
+                onChange={
+                  (e) => setUpdatedContent(e.target.value)
+                  // setUpdatedContent(
+                  //   e.target.value === "" ? note.content : e.target.value
+                  // )
+                }
+              />
+              <button
+                className="text-xl border border-blue-300 mx-3 p-2 rounded-xl bg-white hover:bg-emerald-300 transition ease-in duration-200"
+                onClick={() => updateContent(note.id, note.content)}
+              >
+                <AiOutlineSave size={22} />
+              </button>
+            </div>
+          )}
           <br />
           <p className="text-sm">
             @{note.username.substring(0, 10).concat("...")}
