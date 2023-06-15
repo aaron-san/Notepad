@@ -34,10 +34,7 @@ function Navbar(props: Props) {
   return (
     <div className="shadow-sm w-full fixed top-0 left-0 z-[100]">
       <div className="flex items-center justify-between bg-slate-200 text-slate-700 sm:text-md md:text-3xl px-3 md:px-10">
-        <Link
-          to="/notepad"
-          className="font-[Trykker-Regular] text-lg md:text-4xl tracking-wider"
-        >
+        <Link to="/notepad" className="font-[Trykker-Regular] tracking-wider">
           <span className="text-2xl">N</span>
           <span className="text-l">OTEPAD</span>
         </Link>
@@ -49,10 +46,10 @@ function Navbar(props: Props) {
             // <Link to="/add-note" className="p-2 hover:text-green-200">
 
             <button
-              className="px-2 py-1 hover:text-green-200 mr-1 flex items-center gap-2 border border-slate-500 rounded-xl bg-green-300 text-white hover:bg-green-400 hover:text-white"
+              className="px-2 py-1 mr-1 flex items-center gap-2 border border-slate-500 rounded-xl bg-green-300 text-green-800 hover:bg-green-400"
               onClick={() => setShowModal(true)}
             >
-              <BsPlusCircleDotted className="text-slate-700 text-xl" />
+              <BsPlusCircleDotted className="text-slate-700 md:text-lg" />
               <p className="hidden md:inline-flex">Add</p>
             </button>
 
