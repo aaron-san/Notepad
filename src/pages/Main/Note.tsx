@@ -121,7 +121,7 @@ const Note = (props: Props) => {
   // };
 
   return (
-    <div className="note-card">
+    <div className="note-card max-w-[95%] md:max-w-full">
       <div>
         {/* className="w-[93%] p-4 bg-slate-200 sm:w-85 rounded-md shadow-xl text-slate-600"> */}
         <div className="flex justify-between p-2 rounded-tr-[20px] text-xl">

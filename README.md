@@ -1,23 +1,21 @@
 See live at https://aaron-san.github.io/notepad
 
-# Run on local server
+# Workflow
+
+## Run on local server
 
 ```shell
 npm run start
 ```
 
-# Deployment
+## Deploy
 
 - Deployed on GitHub Pages:
-- Run: "gh-pages -d build"
-
-# Workflow
 
 ```shell
 git add .
 git commit -m "deploy website"
 git push
-
 npm run deploy
 ```
 

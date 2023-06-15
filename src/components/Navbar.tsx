@@ -33,26 +33,27 @@ function Navbar(props: Props) {
 
   return (
     <div className="shadow-sm w-full fixed top-0 left-0 z-[100]">
-      <div className="flex items-center justify-between bg-slate-200 text-slate-700 sm:text-md md:text-2xl md:px-10 px-3 py-3">
+      <div className="flex items-center justify-between bg-slate-200 text-slate-700 sm:text-md md:text-3xl px-3 md:px-10">
         <Link
           to="/notepad"
-          className="font-[Trykker-Regular] sm:text-md md:text-4xl"
+          className="font-[Trykker-Regular] text-lg md:text-4xl tracking-wider"
         >
-          Notepad
+          <span className="text-2xl">N</span>
+          <span className="text-l">OTEPAD</span>
         </Link>
-        <div className="h-[20px] md:h-[400px] flex flex-row gap-6 md:gap-0 items-center justify-center md:items-center">
-          {/* <div className="flex justify-center"> */}
+        {/* <div className="h-[20px] md:h-[40px] flex gap-6 md:gap-0"> */}
+        <div className="flex justify-end gap-1 py-2">
           {!user ? (
             <Login />
           ) : (
             // <Link to="/add-note" className="p-2 hover:text-green-200">
 
             <button
-              className="px-3 py-1.5 hover:text-green-200 mr-1 flex gap-2 items-center border border-slate-500 rounded-xl bg-green-500 text-white hover:bg-green-400 hover:text-white"
+              className="px-2 py-1 hover:text-green-200 mr-1 flex items-center gap-2 border border-slate-500 rounded-xl bg-green-300 text-white hover:bg-green-400 hover:text-white"
               onClick={() => setShowModal(true)}
             >
-              <BsPlusCircleDotted />
-              <p>Add note</p>
+              <BsPlusCircleDotted className="text-slate-700 text-xl" />
+              <p className="hidden md:inline-flex">Add</p>
             </button>
 
             // </Link>
@@ -62,28 +63,28 @@ function Navbar(props: Props) {
           {/* <div> */}
           {user && (
             <>
-              <div className="mx-3 flex items-center">
-                <p className="hidden lg:text-sm">{user?.displayName}</p>
-                <img
-                  className="sm:hidden md:flex mx-0 rounded-sm "
-                  src={user?.photoURL || ""}
-                  width="30"
-                  height="30"
-                  alt=""
-                />
-                <button
-                  onClick={signUserOut}
-                  className="sm:text-sm md:text-md mr-3 p-2 hover:text-green-200"
-                >
-                  Log Out
-                </button>
-              </div>
+              {/* <p className="hidden lg:inline-flex items-center text-sm">
+                {user?.displayName}
+              </p> */}
+              {/* <img
+                className="hidden md:flex mx-0 rounded-sm "
+                src={user?.photoURL || ""}
+                width="30"
+                height="30"
+                alt=""
+              /> */}
+              <button
+                onClick={signUserOut}
+                className="text-sm md:text-lg ml-1 mr-1 p-2 border border-red-500 rounded-[12px] text-red-500 bg-red-200"
+              >
+                Sign Out
+              </button>
             </>
           )}
+          {/* </div> */}
         </div>
-        {/* </div> */}
-        <div className="flex text-xl text-gray-200 justify-center items-center">
-          {/* <div
+        {/* <div className="flex text-xl text-gray-200 justify-center items-center"> */}
+        {/* <div
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`text-2xl absolute right-6 top-5 cursor-pointer md:hidden ${
               isMenuOpen ? "text-slate-100" : "text-slate-600"
@@ -91,14 +92,14 @@ function Navbar(props: Props) {
           >
             {isMenuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
           </div> */}
-          {/* <ul
+        {/* <ul
             className={`md:pb-0 pb-12 absolute md:static bg-slate-500 md:bg-inherit md:z-auto z-[10] left-0 w-full md:w-auto md:pl-0 transition-all duration-300 ease-in text-slate-100 md:text-slate-700 ${
               isMenuOpen ? "top-0" : "top-[-490px]"
             }`}
           > */}
 
-          {/* </ul> */}
-        </div>
+        {/* </ul> */}
+        {/* </div> */}
       </div>
       {showModal && (
         <FormModal

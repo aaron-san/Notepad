@@ -14,12 +14,12 @@ const Login = () => {
   // };
 
   return (
-    <div className="text-gray-100 m-6 pt-[130px] text-center">
+    <div className="text-gray-100 text-center">
       <button
         onClick={() => {
           signInWithGoogle();
         }}
-        className="text-gray-700 text-xl transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline divide-y divide-gray-200 bg-white m-3 hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+        className="text-gray-700 text-xl transition-colors ease-in-out duration-200 focus:outline-none focus:shadow-outline divide-y divide-gray-200 bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded shadow py-1"
       >
         Sign in with Google
       </button>
