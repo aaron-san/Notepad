@@ -9,6 +9,17 @@ interface Props {
   setNotesList: (arg: INote[]) => void;
 }
 
+const defaultData: INote[] = [
+  {
+    userId: "John Doe",
+    username: "John",
+    id: "sdf4were3sgf9483884",
+    title: "Get Groceries",
+    content: "Go to Safeway after work",
+    isImportant: false,
+  },
+];
+
 export const Main = (props: Props) => {
   const notesList = props.notesList;
   const setNotesList = props.setNotesList;
@@ -24,8 +35,24 @@ export const Main = (props: Props) => {
           id: doc.id,
         })) as INote[];
         setNotesList(filteredData);
+
+        // .....................
+        //  Trying to update all firestore documents to have an "isImportant" field with value "false"
+        // .....................
+
+        // getDocs(notesRef).then((querySnapshot) => {
+        //   querySnapshot.forEach(async (doc: any) => {
+        //     await db
+        //       .collection("notes")
+        //       .doc(doc.id)
+        //       .set({ isImportant: false }, { merge: true });
+        //     // doc.data() is never undefined for query doc snapshots
+        //     console.log(doc.id, " => ", doc.data());
+        //   });
+        // });
       } catch (err) {
         console.error(err);
+        setNotesList(defaultData);
       }
     };
     getNotes();

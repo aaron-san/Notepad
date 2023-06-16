@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import { INote } from "../../App";
 import { db } from "../../config/firebase";
 import { doc, deleteDoc, getDoc, updateDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineEdit, AiOutlineSave, AiOutlineDelete } from "react-icons/ai";
+import { TbUrgent } from "react-icons/tb";
 
 // import EditModal from "../../components/EditModal";
 
@@ -13,7 +14,22 @@ interface Props {
   setNotesList: (arg: INote[]) => void;
 }
 
+type StateType = {
+  isImportant: boolean;
+};
+
+const reducer = (state: StateType, action: any) => {
+  if (action.type === "important") {
+    return {
+      isImportant: state.isImportant ? false : true,
+    };
+  }
+  throw Error("Unknown action.");
+};
+
 const Note = (props: Props) => {
+  const [state, dispatch] = useReducer(reducer, { isImportant: false });
+
   // const [showEditModal, setShowEditModal] = useState(false);
   // const [isEditMenuOpen, setIsEditMenuOpen] = useState(false);
   const [showTitleInput, setShowTitleInput] = useState(false);
@@ -219,6 +235,16 @@ const Note = (props: Props) => {
           <p className="text-sm">
             @{note.username.substring(0, 10).concat("...")}
           </p>
+
+          <button
+            className="border border-slate-400 rounded-md p-1 my-1 bg-red-200"
+            onClick={() => dispatch({ type: "important" })}
+          >
+            <TbUrgent />
+          </button>
+          <span className="pl-1 text-red-700">
+            {state.isImportant ? "Important!" : ""}
+          </span>
         </div>
       </div>
     </div>

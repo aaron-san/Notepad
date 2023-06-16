@@ -33,10 +33,13 @@ function Navbar(props: Props) {
 
   return (
     <div className="shadow-sm w-full fixed top-0 left-0 z-[100]">
-      <div className="flex items-center justify-between bg-slate-200 text-slate-700 sm:text-md md:text-3xl px-3 md:px-10">
-        <Link to="/notepad" className="font-[Trykker-Regular] tracking-wider">
-          <span className="text-2xl">N</span>
-          <span className="text-l">OTEPAD</span>
+      <div className="flex items-center justify-between bg-slate-200 text-white px-3 md:px-10">
+        <Link
+          to="/notepad"
+          className="font-[Trykker-Regular] tracking-wider drop-shadow-lg font-bold"
+        >
+          <span className="text-2xl md:text-4xl">N</span>
+          <span className="text-lg md:text-3xl">OTEPAD</span>
         </Link>
         {/* <div className="h-[20px] md:h-[40px] flex gap-6 md:gap-0"> */}
         <div className="flex justify-end gap-1 py-2">

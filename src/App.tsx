@@ -20,6 +20,7 @@ export interface INote {
   title: string;
   username: string;
   content: string;
+  isImportant: boolean;
 }
 
 function App() {
